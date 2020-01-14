@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+header h2 {
+    text-align: center;
+}
+
+main{
+    height: calc(100vh - 100px);
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+}
+main #dateList{
+    height: 30px;
+
+}
+
+main .input{
+    text-align: center;
+    margin: 30px auto;
+    background-color: lightgray;
+    width: 50%;
+}
+
+main .input #inputText{
+    width: 80%;
+    border: none;
+}
+
+main .input #saveItemBtn{
+    padding: 3px 5px;
+    background-color:red;
+    width: 15%;
+    color: white;
+    font-weight:bold;
+}
+
+#dateList li{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    list-style-type: none;
+
+}
+
+i {
+    padding: 5px;
+}
+.fa-save {
+    display: none;
+}
+
+.todo-text{
+    display: inline-block;
+}
+
+.hidden{
+    display: none;
+}
+
+.edit-input {
+    display: none;
+}
+
+.active{
+    display: inline-block;
+}

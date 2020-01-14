@@ -48,6 +48,25 @@ $(document).ready( function () {
                 }
         });
     }
+
+    //This function update a list item CRUD = UPDETE
+    function updateListItem(idListItem, textListItem) {
+        $.ajax({
+            url:APIBASE + idListItem,
+            method:'PATCH',
+            data:{
+                text:textListItem
+            },
+            success:function () {
+            container.empty();
+            getList()
+            },
+            error:function(err) {
+                    console.log(err);
+                }
+        });
+    }
+
     //This function delete a list item CRUD = DELETE
     function deleteListItem(idListItem) {
         $.ajax({
@@ -87,11 +106,19 @@ $(document).ready( function () {
     });
 
     $('#dateList').on('click','.fa-save',function () {
-        let text = $(this).siblings('.edit-input').val().trim();
-        console.log(text);
-        $(this).siblings('.fa-save').addClass('active');
-        $(this).addClass('hidden');
-        $(this).siblings('.edit-input').addClass('active');
-        $(this).siblings('.todo-text').addClass('hidden');
+        const selectItemsID  =  $(this).parent('li').attr('dataId');
+        let textItem = $(this).siblings('.todo-text').text();
+        let newTextItem = $(this).siblings('.edit-input').val().trim()
+        if (!newTextItem) {
+            textItem;
+            updateListItem(selectItemsID,textItem);
+            return;
+        }
+        updateListItem(selectItemsID,newTextItem);
+
+        $(this).siblings('.fa-edit').removeClass('hidden');
+        $(this).removeClass('active');
+        $(this).siblings('.edit-input').removeClass('active');
+        $(this).siblings('.todo-text').removeClass('hidden');
     });
 });
